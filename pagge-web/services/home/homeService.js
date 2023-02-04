@@ -1,6 +1,8 @@
-/* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
-
 var isAberto = false;
+
+async function fetchHtml(url) {
+    return await (await fetch(url)).text();
+}
 
 function onClickNav() {
     if(!isAberto){
@@ -8,10 +10,11 @@ function onClickNav() {
         var links = document.querySelectorAll(".link");
         for(let link of links){
             link.querySelector('img').hidden = true;
-            
+            link.querySelector('label').hidden = false;
             setTimeout(() => {
-                link.querySelector('label').hidden = false;
-            }, 200);
+                link.querySelector('img').style.opacity = 0;
+                link.querySelector('label').style.opacity = 1;
+            }, 235);
         }
         isAberto = true;
     }else{
@@ -20,7 +23,15 @@ function onClickNav() {
         for(let link of links){
             link.querySelector('img').hidden = false;
             link.querySelector('label').hidden = true;
+            setTimeout(() => {
+                link.querySelector('img').style.opacity = 1;
+                link.querySelector('label').style.opacity = 0;
+            }, 100);
         }
         isAberto = false;
     }
+}
+
+async function navigateUsuario(params) {
+   document.querySelector(".conteudo").innerHTML = await fetchHtml("/pagge-web/views/grid/usuario/usuarioGrid.html");
 }

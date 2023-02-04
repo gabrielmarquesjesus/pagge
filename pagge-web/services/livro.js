@@ -1,7 +1,0 @@
-function livro (){
-    
-}
-
-function funcaoTeste(){
-    
-}

@@ -1,3 +1,5 @@
+@import url('../base.css');
+
 .sidebarMenu {
     height: 100%; /* 100% Full-height */
     width: 60px; /* 0 width - change this with JavaScript */
@@ -5,7 +7,7 @@
     z-index: 1; /* Stay on top */
     top: 0;
     left: 0;
-    background-color: #1B5C81; /* Black*/
+    background-color: var(--dark-blue); /* Black*/
     overflow-x: hidden; /* Disable horizontal scroll */
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
     display: flex;
@@ -22,7 +24,7 @@
     font-size: 25px;
     font-family: 'Arial Narrow Bold', sans-serif;
     font-weight: bold;
-    background-color: #427FA3;
+    background-color: var(--blue);
     color: rgb(255, 254, 254);
     display: flex;
     justify-content: center;
@@ -31,21 +33,27 @@
     border-radius: 10px;
 }
 
+.link label{
+    transition: 0.5s;
+    opacity: 0;
+}
+
 .link img{
     height: 20px;
-    
+    transition: 0.5s;
+    opacity: 1;
 }
 
 /* When you mouse over the navigation links, change their color */
 .link:hover {
-    background-color: #77a5c0;
+    background-color: var(--light-blue);
 }
 
 /* Position and style the close button (top right corner) */
 .navBtn {
     position: absolute;
     width: 100%;
-    background-color: #427FA3;
+    background-color: var(--blue);
     color:rgb(255, 254, 254);
     font-size: 36px;
     display: flex;
@@ -54,7 +62,7 @@
 }
 
 .navBtn:hover {
-    background-color: #77a5c0;
+    background-color: var(--light-blue);
 }
 
 .menuLateralTop {
@@ -65,4 +73,8 @@
     position: relative;
     width: 100%;
     bottom:10px;
+}
+
+.conteudo{
+    padding-left: 65px;
 }
