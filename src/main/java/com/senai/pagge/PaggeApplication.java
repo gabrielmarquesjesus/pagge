@@ -1,14 +1,13 @@
-package com.pagge.core;
+package com.senai.pagge;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Application {
+public class PaggeApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
-		System.out.println("teste");
+		SpringApplication.run(PaggeApplication.class, args);
 	}
 
 }
