@@ -35,6 +35,5 @@ function onClickNav() {
 }
 
 async function navigateHome() {
-    const response = await fetch('/home');
     document.querySelector(".conteudo").innerHTML = "";
 }
