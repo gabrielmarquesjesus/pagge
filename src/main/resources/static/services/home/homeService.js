@@ -1,6 +1,5 @@
 document.querySelector('.navBtn').addEventListener('click',onClickNav);
 document.querySelector('#linkHome').addEventListener('click', navigateHome);
-document.querySelector('#linkLivro').addEventListener('click', navigateUsuario);
 
 var isAberto = false;
 
@@ -16,6 +15,7 @@ function onClickNav() {
                 link.querySelector('label').style.opacity = 0;
             }, 100);
         }
+            document.querySelector(".conteudo").style.backgroundColor = 'rgba(0,0,0,0)';
         isAberto = false;
     }else{
         document.getElementById("menuLateral").style.width = "400px";
@@ -28,6 +28,8 @@ function onClickNav() {
                 link.querySelector('label').style.opacity = 1;
             }, 235);
         }
+
+            document.querySelector(".conteudo").style.backgroundColor = 'rgba(0,0,0,0.5)';
         isAberto = true;
     }
 }
@@ -35,9 +37,4 @@ function onClickNav() {
 async function navigateHome() {
     const response = await fetch('/home');
     document.querySelector(".conteudo").innerHTML = "";
-}
-
-async function navigateUsuario() {
-    const response = await fetch('/usuarios');
-    document.querySelector(".conteudo").innerHTML = await response.text();
 }
