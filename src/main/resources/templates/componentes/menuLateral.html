@@ -1,0 +1,32 @@
+<link rel="stylesheet" type="text/css" href="../static/css/menuLateral/menuLateralStyle.css">
+<div id="menuLateral" class="sidebarMenu">
+    <!-- Menu lateral -->
+    <a class="navBtn">&#9776;</a> <!-- Botão que abre o menu lateral -->
+    <div class="menuLateralTop">
+        <!-- Parte de cima do menu lateral -->
+        <a class="link">
+            <!-- Link para a página de livros -->
+            <label hidden for="link">Livros</label>
+            <img src="../static/icons/Livros.png">
+        </a>
+        <a class="link">
+            <label hidden for="link">Usuários</label>
+            <img src="../static/icons/Usuarios.png">
+        </a>
+        <a class="link">
+            <label hidden for="link">Empréstimos e Devoluções</label>
+            <img src="../static/icons/Emprestimos.png">
+        </a>
+    </div>
+    <div class="menuLateralBottom">
+        <!-- Parte de baixo do menu lateral -->
+        <a class="link">
+            <label hidden for="link">Suporte</label>
+            <img src="../static/icons/Suporte.png">
+        </a>
+        <a class="link" th:href="@{/home}">
+            <label hidden for="link">Home</label>
+            <img src="../static/icons/Home.png">
+        </a>
+    </div>
+</div>

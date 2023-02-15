@@ -1,4 +1,4 @@
-package com.senai.pagge.core;
+package com.senai.pagge;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
