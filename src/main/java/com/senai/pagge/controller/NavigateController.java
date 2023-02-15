@@ -11,8 +11,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class NavigateController {
 
-    @GetMapping("/home") // Ao fazer uma requisição para a url: localhost:8080/home ...
+    @GetMapping(value = "/menuLateral") // Ao fazer uma requisição para a url: localhost:8080/menuLateral ...
+    public String menu() {
+        return "componentes/menuLateral"; // irá retornar o arquivo menuLateral.html
+    }
+
+    @GetMapping(value = "/home") // Ao fazer uma requisição para a url: localhost:8080/home ...
     public String navigateHome() {
         return "index"; // irá retornar o arquivo index.html
     }
+
 }
