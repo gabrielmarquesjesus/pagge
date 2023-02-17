@@ -2,8 +2,8 @@
 var isAberto = false;
 
 export async function renderMenuLateral(){
-    var navBar = await(await fetch('/menuLateral')).text();
-    document.querySelector('.navBar').innerHTML = navBar;
+    var menuLateral = await(await fetch('/menuLateral')).text();
+    document.querySelector('.menuLateral').innerHTML = menuLateral;
 
     document.querySelector('.navBtn').addEventListener('click', onClickNav);
 }
