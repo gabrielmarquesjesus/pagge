@@ -1,0 +1,66 @@
+.geral {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0px 30px 0px 90px;
+    box-sizing: border-box;
+}
+
+.filtro {
+    border: black 1px solid;
+    height: fit-content;
+    margin-bottom: 30px;
+    border-radius: 0px 0px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 20px;
+}
+
+.filtroTitulo {
+    display: flex;
+    text-align: center;
+    width: fit-content;
+    border: black 1px solid;
+    margin: 0 auto;
+    border-radius: 0px 0px 5px 5px;
+    height: fit-content;
+    padding: 0px 7px;
+}
+
+.filtroCampos {
+    margin: 10px 0px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.filtroCampos div{
+    display: flex;
+    padding: 0px 10px;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.filtroCampos #campoCodigo{
+    width: 100px;
+}
+
+.filtroCampos #campoIsbn{
+    width: 145px;
+}
+
+.tabelaLivro {
+    border: black 1px solid;
+    width: 100%;
+}
+
+.tabelaLivro,th,td {
+    border-collapse: collapse;
+    padding: 15px 10px;
+    text-align: left;
+}
+
+.tabelaLivro tr:nth-child(even) {
+    background-color: rgb(180, 180, 180);
+}

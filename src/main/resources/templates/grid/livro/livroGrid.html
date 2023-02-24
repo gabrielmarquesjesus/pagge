@@ -7,22 +7,67 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Livros</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="static/css/livro/livroGridStyle.css">
+    <link rel="stylesheet" href="static/css/app.css">
+
 </head>
 
-<body class="w-100 p-3">
-    <div class="w-100 p-3">
+<body>
+    <div class="geral">
         <div class="menuLateral"></div>
-        <h1>Lista de Livros</h1>
-        <table class="table table-striped">
+
+        <div class="filtro">
+            <div class="filtroTitulo">
+                <h4>Busca de Livros</h4>
+            </div>
+
+            <div class="filtroCampos">
+                <div id="campoCodigo">
+                    <label for="codigo">Código:</label>
+                    <input type="number" name="codigo" id="codigo">
+                </div>
+
+                <div >
+                    <label for="titulo">Título:</label>
+                    <input type="text" name="titulo" id="titulo">
+                </div>
+
+                <div>
+                    <label for="autor">Autor:</label>
+                    <input type="text" name="autor" id="autor">
+                </div>
+
+                <div>
+                    <label for="editora">Editora:</label>
+                    <input type="text" name="editora" id="editora">
+                </div>
+
+                <div>
+                    <label for="genero">Gênero:</label>
+                    <input type="text" name="genero" id="genero">
+                </div>
+
+                <div id="campoIsbn">
+                    <label for="isbn">Isbn:</label>
+                    <input type="text" name="isbn" id="isbn">
+                </div>
+
+                <div>
+                    <label for="status">Status:</label>
+                    <select name="status" id="status">
+                        <option value="0">Indisponivel</option>
+                        <option value="1">Disponivel</option>
+                    </select>
+
+                </div>
+            </div>
+
+        </div>
+        <table class="tabelaLivro">
             <thead>
                 <tr>
                     <th scope="col">Codigo</th>
-                    <th scope="col" class="thTitulo">Título</th>
+                    <th scope="col">Título</th>
                     <th scope="col">Autor</th>
                     <th scope="col">Editora</th>
                     <th scope="col">Genero</th>
@@ -31,7 +76,7 @@
             </thead>
             <tbody>
                 <tr>
-                    <th scope="row">1</th>
+                    <td scope="row">1</td>
                     <td>1984</td>
                     <td>George Orwell</td>
                     <td>Companhia das Letras</td>
@@ -39,7 +84,7 @@
                     <td>416</td>
                 </tr>
                 <tr>
-                    <th scope="row">2</th>
+                    <td scope="row">2</td>
                     <td>O Pequeno Príncipe</td>
                     <td>Antoine de Saint-Exupéry</td>
                     <td>Agir</td>
@@ -47,7 +92,15 @@
                     <td>96</td>
                 </tr>
                 <tr>
-                    <th scope="row">3</th>
+                    <td scope="row">3</td>
+                    <td>O Senhor dos Anéis: A Sociedade do Anel</td>
+                    <td>J.R.R. Tolkien</td>
+                    <td>Martins Fontes</td>
+                    <td>Fantasia</td>
+                    <td>576</td>
+                </tr>
+                <tr>
+                    <td scope="row">3</td>
                     <td>O Senhor dos Anéis: A Sociedade do Anel</td>
                     <td>J.R.R. Tolkien</td>
                     <td>Martins Fontes</td>

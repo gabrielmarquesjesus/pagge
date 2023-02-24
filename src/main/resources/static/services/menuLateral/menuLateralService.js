@@ -1,10 +1,9 @@
-
-var isAberto = false;
+var isAberto = true;
 
 export async function renderMenuLateral(){
     var menuLateral = await(await fetch('/menuLateral')).text();
     document.querySelector('.menuLateral').innerHTML = menuLateral;
-
+    onClickNav();
     document.querySelector('.navBtn').addEventListener('click', onClickNav);
 }
 
@@ -19,6 +18,7 @@ function onClickNav() {
             setTimeout(() => {
                 link.querySelector('img').style.opacity = 1;
                 link.querySelector('label').style.opacity = 0;
+                document.querySelector('.container').style.backgroundColor = "rgba(0, 0, 0, 0)";
             }, 100);
         }
         isAberto = false;
@@ -31,9 +31,9 @@ function onClickNav() {
             setTimeout(() => {
                 link.querySelector('img').style.opacity = 0;
                 link.querySelector('label').style.opacity = 1;
+                document.querySelector('.container').style.backgroundColor = "rgba(0, 0, 0, 0.5)";
             }, 235);
         }
-
         isAberto = true;
     }
 }
