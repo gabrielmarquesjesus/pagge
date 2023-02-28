@@ -9,12 +9,12 @@
 
 .filtro {
     border: black 1px solid;
-    height: fit-content;
+    height: auto;
     margin-bottom: 30px;
     border-radius: 0px 0px 20px 20px;
     display: flex;
     flex-direction: column;
-    padding: 0px 20px;
+    padding: 0px 10px;
 }
 
 .filtroTitulo {
@@ -29,7 +29,7 @@
 }
 
 .filtroCampos {
-    margin: 10px 0px;
+    margin: 10px 0px 0px 0px;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -63,4 +63,22 @@
 
 .tabelaLivro tr:nth-child(even) {
     background-color: rgb(180, 180, 180);
+}
+
+.filtroBotoes{
+    display: flex;
+}
+
+.btnAdicionar{
+    margin: 0px 10px 10px 10px;
+    border-color: #2B673C;
+    background-color: #9AD4A0;
+}
+
+.btnRelatorio img{
+    width: 60%;
+}
+
+.btnPesquisa img{
+    width: 66.5%;
 }

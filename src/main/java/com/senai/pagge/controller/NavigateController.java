@@ -22,8 +22,12 @@ public class NavigateController {
     }
 
     @GetMapping(value ="/livros")
-    public String navigateLivros(){
+    public String navigateLivroGrid(){
         return "grid/livro/livroGrid"; 
     }
-
+    
+    @GetMapping(value ="/cadastroLivro")
+    public String navigateLivroForm(){
+        return "form/livro/livroForm"; 
+    }
 }
