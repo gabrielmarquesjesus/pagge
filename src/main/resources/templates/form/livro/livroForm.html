@@ -12,7 +12,9 @@
 
 <body>
     <header class="header">
-        <h1 class="tituloCadastro">Cadastro de Livro</h1>
+        <div class="tituloPagina">
+            <h1>Cadastro de Livro</h1>
+        </div>
         
         <button class="bntFechar">
             <img src="static/icons/Fechar.png" alt="">
@@ -40,6 +42,7 @@
 
             <label for="status">Status:</label>
             <select name="status" id="status">
+                <option hidden value="">Selecione...</option>
                 <option value="0">Indisponivel</option>
                 <option value="1">Disponivel</option>
             </select>
@@ -51,16 +54,17 @@
         <div class="imgLivro">
             <img src="https://images-submarino.b2w.io/produtos/01/00/img/128898/3/128898358_2GG.jpg" alt="">
         </div>
+
+        <div class="footer">
+            <button type="submit" class="bntSalvar btn-retangulo">
+                Salvar
+            </button>
+    
+        </div>
     </form>
 
-    <footer class="footer">
-        <button class="bntSalvar">
-            Salvar
-        </button>
 
-    </footer>
-
-
+    <script type="module" src="static/services/livros/livroService.js"></script>
 </body>
 
 </html>

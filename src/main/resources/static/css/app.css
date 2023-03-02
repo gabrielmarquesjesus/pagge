@@ -11,10 +11,57 @@ body {
     width: 100%;
 }
 
-input, select{
-    padding: 3px 3px;
-    margin-bottom: 10px;
-   
+/*Tabela-Padrão*/
+.tabelaLivro {
+    width: 100%;
+}
+
+thead{
+    background-color: var(--dark-blue);
+}
+
+th{
+    font-size: 20px;
+    color: white;
+}
+
+.tabelaLivro,
+th,
+td {
+    border: black 1px solid;
+    border-collapse: collapse;
+    padding: 15px 10px;
+    text-align: left;
+}
+
+.tabelaLivro tr:nth-child(even) {
+    background-color: var(--light-blue2);
+}
+
+.tabelaLivro tr:nth-last-child(even) {
+    background-color: var(--branco-sujo);
+}
+/*Fim tabela*/
+.tituloPagina{
+    display: flex;
+    text-align: center;
+    width: fit-content;
+    border: black 1px solid;
+    margin: 0 auto;
+    border-radius: 0px 0px 10px 10px;
+    height: fit-content;
+    padding: 1px 11px;
+    background-color: var(--dark-blue);
+    color: white;
+}
+input, select, textarea{
+    margin-bottom: 20px;
+    background-color: var(--cinza);
+    border-radius: 7px;
+    border: 1px var(--dark-blue) solid;
+    font-size: 20px;
+    padding-left: 10px;
+    height: 35px;
 }
 
 input[type="number"]::-webkit-outer-spin-button,
@@ -25,7 +72,8 @@ input[type="number"]::-webkit-inner-spin-button {
 
 textarea{
     resize: none;
-    height: 100px;
+    height: 90px;
+    padding-top: 5px;
 }
 input[type="number"] {
     -moz-appearance: textfield;
@@ -46,4 +94,14 @@ input[type="number"] {
     width: 75%;
     align-self: center;
     margin: 0 auto;
+}
+
+.btn-retangulo{
+    cursor: pointer;
+    background-color: var(--dark-blue);
+    border-radius: 10px;
+    border: 0;
+    color: white;
+    height: 45px;
+    width: 100px;
 }

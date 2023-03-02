@@ -3,11 +3,11 @@ var isAberto = true;
 export async function renderMenuLateral() {
     var menuLateral = await (await fetch('/menuLateral')).text();
     document.querySelector('.menuLateral').innerHTML = menuLateral;
-    onClickNav();
+    onClickNav(true);
     document.querySelector('.navBtn').addEventListener('click', onClickNav);
 }
 
-function onClickNav() {
+function onClickNav(isRender) {
 
     if (isAberto) {
         document.getElementById("menuLateral").style.width = "60px";
@@ -18,11 +18,12 @@ function onClickNav() {
             setTimeout(() => {
                 link.querySelector('img').style.opacity = 1;
                 link.querySelector('label').style.opacity = 0;
-                document.querySelector('.container').style.backgroundColor = "rgba(0, 0, 0, 0)";
-                setTimeout(function () {
-                    document.querySelector('.container').remove();
-
-                },200)
+                if (!isRender) {
+                    document.querySelector('.container').style.backgroundColor = "rgba(0, 0, 0, 0)";
+                    setTimeout(function () {
+                        document.querySelector('.container').remove();
+                    }, 200)
+                }
             }, 100);
         }
         isAberto = false;
