@@ -12,7 +12,7 @@ body {
 }
 
 /*Tabela-Padrão*/
-.tabelaLivro {
+.tabela {
     width: 100%;
 }
 
@@ -25,7 +25,7 @@ th{
     color: white;
 }
 
-.tabelaLivro,
+.tabela,
 th,
 td {
     border: black 1px solid;
@@ -34,11 +34,11 @@ td {
     text-align: left;
 }
 
-.tabelaLivro tr:nth-child(even) {
+.tabela tr:nth-child(even) {
     background-color: var(--light-blue2);
 }
 
-.tabelaLivro tr:nth-last-child(even) {
+.tabela tr:nth-last-child(even) {
     background-color: var(--branco-sujo);
 }
 /*Fim tabela*/
