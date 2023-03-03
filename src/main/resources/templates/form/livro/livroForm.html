@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de livro</title>
+    <link rel="stylesheet" href="static/css/app.css">
+    <link rel="stylesheet" href="static/css/livro/livroFormStyle.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="tituloPagina">
+            <h1>Cadastro de Livro</h1>
+        </div>
+        
+        <button class="bntFechar">
+            <img src="static/icons/Fechar.png" alt="">
+        </button>
+    </header>
+    <form class="formLivro">
+        <div class="formCampos">
+            <label for="titulo">Título:</label>
+            <input type="text" name="titulo" id="titulo">
+
+            <label for="autor">Autor:</label>
+            <input type="text" name="autor" id="autor">
+
+            <label for="editora">Editora:</label>
+            <input type="text" name="editora" id="editora">
+
+            <label for="paginas">Páginas:</label>
+            <input type="number" name="paginas" id="pagina">
+
+            <label for="genero">Gênero:</label>
+            <input type="text" name="genero" id="genero">
+
+            <label for="isbn">Isbn:</label>
+            <input type="text" name="isbn" id="isbn">
+
+            <label for="status">Status:</label>
+            <select name="status" id="status">
+                <option hidden value="">Selecione...</option>
+                <option value="0">Indisponivel</option>
+                <option value="1">Disponivel</option>
+            </select>
+
+            <label for="observacao">Observação:</label>
+            <textarea id="observacao" name="observacao" re></textarea>
+        </div>
+
+        <div class="imgLivro">
+            <img src="https://images-submarino.b2w.io/produtos/01/00/img/128898/3/128898358_2GG.jpg" alt="">
+        </div>
+
+        <div class="footer">
+            <button type="submit" class="bntSalvar btn-retangulo">
+                Salvar
+            </button>
+    
+        </div>
+    </form>
+
+
+    <script type="module" src="static/services/livros/livroService.js"></script>
+</body>
+
+</html>

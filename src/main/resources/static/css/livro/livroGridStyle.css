@@ -1,0 +1,65 @@
+.geral {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0px 30px 0px 90px;
+    box-sizing: border-box;
+}
+
+.filtro {
+    border: 0;
+    height: auto;
+    margin-bottom: 30px;
+    border-radius: 0px 0px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 10px;
+    background-color: var(--light-blue2);
+}
+
+
+.filtroCampos {
+    margin: 10px 0px 0px 0px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+input,
+select {
+    background-color: white;
+}
+
+.filtroCampos div {
+    display: flex;
+    padding: 0px 10px;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.filtroCampos #campoCodigo {
+    width: 100px;
+}
+
+.filtroCampos #campoIsbn {
+    width: 145px;
+}
+
+.filtroBotoes {
+    display: flex;
+}
+
+.btnAdicionar {
+    margin: 0px 10px 10px 10px;
+    border-color: #2B673C;
+    background-color: #9AD4A0;
+}
+
+.btnRelatorio img {
+    width: 60%;
+}
+
+.btnPesquisa img {
+    width: 66.5%;
+}
