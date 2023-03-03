@@ -1,0 +1,107 @@
+@import url('../base.css');
+* {
+    padding: 0;
+    margin: 0;
+    font-family: Arial;
+    font-size: 13pt;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+}
+
+/*Tabela-Padrão*/
+.tabela {
+    width: 100%;
+}
+
+thead{
+    background-color: var(--dark-blue);
+}
+
+th{
+    font-size: 20px;
+    color: white;
+}
+
+.tabela,
+th,
+td {
+    border: black 1px solid;
+    border-collapse: collapse;
+    padding: 15px 10px;
+    text-align: left;
+}
+
+.tabela tr:nth-child(even) {
+    background-color: var(--light-blue2);
+}
+
+.tabela tr:nth-last-child(even) {
+    background-color: var(--branco-sujo);
+}
+/*Fim tabela*/
+.tituloPagina{
+    display: flex;
+    text-align: center;
+    width: fit-content;
+    border: black 1px solid;
+    margin: 0 auto;
+    border-radius: 0px 0px 10px 10px;
+    height: fit-content;
+    padding: 1px 11px;
+    background-color: var(--dark-blue);
+    color: white;
+}
+input, select, textarea{
+    margin-bottom: 20px;
+    background-color: var(--cinza);
+    border-radius: 7px;
+    border: 1px var(--dark-blue) solid;
+    font-size: 20px;
+    padding-left: 10px;
+    height: 35px;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+textarea{
+    resize: none;
+    height: 90px;
+    padding-top: 5px;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.btn-rouded{
+    width:40px;
+    height:40px;
+    border-radius: 20px;
+    display: flex;
+    margin-right: 10px;
+    background-color: white;
+    border:var(--dark-blue) 2px solid ;
+    cursor: pointer;
+}
+
+.btn-rouded img{
+    width: 75%;
+    align-self: center;
+    margin: 0 auto;
+}
+
+.btn-retangulo{
+    cursor: pointer;
+    background-color: var(--dark-blue);
+    border-radius: 10px;
+    border: 0;
+    color: white;
+    height: 45px;
+    width: 100px;
+}
