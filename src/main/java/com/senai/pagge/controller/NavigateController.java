@@ -1,7 +1,14 @@
 package com.senai.pagge.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import com.senai.pagge.entities.Livro;
+import com.senai.pagge.services.LivroService;
 
 /*
 * Classe java responsável por endereçar cada tela do sistema para que 
@@ -10,6 +17,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class NavigateController {
+
+    @Autowired
+    private LivroService livroService;
 
     @GetMapping(value = "/menuLateral") // Ao fazer uma requisição para a url: localhost:8080/menuLateral ...
     public String menu() {
@@ -22,7 +32,9 @@ public class NavigateController {
     }
 
     @GetMapping(value ="/livros")
-    public String navigateLivroGrid(){
+    public String navigateLivroGrid(Model model){
+        List<Livro> livroList = livroService.findAll();
+        model.addAttribute("livroList", livroList);
         return "grid/livro/livroGrid"; 
     }
     

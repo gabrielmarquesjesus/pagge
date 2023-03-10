@@ -16,7 +16,7 @@ if (telaAtual == "/livros") {
 }else if (telaAtual == "/cadastroLivro") { 
     document.querySelector('.bntFechar').addEventListener('click', btnFecharClick);
 
-    function btnFecharClick() {
-         window.open('/livros', '_self');
+    function btnFecharClick(evento) {
+        window.open('/livros', '_self');
     }
 }

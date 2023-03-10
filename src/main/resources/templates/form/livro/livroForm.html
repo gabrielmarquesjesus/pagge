@@ -15,13 +15,17 @@
         <div class="tituloPagina">
             <h1>Cadastro de Livro</h1>
         </div>
-        
+
         <button class="bntFechar">
             <img src="static/icons/Fechar.png" alt="">
         </button>
     </header>
-    <form class="formLivro">
+    <form action="/livro/save" method="post" class="formLivro">
         <div class="formCampos">
+
+            <label for="id">Id:</label>
+            <input type="number" name="id" id="id">
+
             <label for="titulo">Título:</label>
             <input type="text" name="titulo" id="titulo">
 
@@ -59,7 +63,7 @@
             <button type="submit" class="bntSalvar btn-retangulo">
                 Salvar
             </button>
-    
+
         </div>
     </form>
 
