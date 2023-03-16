@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.senai.pagge.entities.Livro;
 import com.senai.pagge.services.LivroService;
@@ -38,8 +39,9 @@ public class NavigateController {
         return "grid/livro/livroGrid"; 
     }
     
-    @GetMapping(value ="/cadastroLivro")
-    public String navigateLivroForm(){
+    @GetMapping(value ="/cadastroLivro/{livroJson}")
+    public String navigateLivroForm(@PathVariable String livroJson){
+        System.out.println(livroJson);
         return "form/livro/livroForm"; 
     }
 }

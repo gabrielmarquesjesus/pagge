@@ -20,7 +20,7 @@ public class LivroService implements BaseService<Livro>  {
 
     @Override
     public Livro findById(Long id) {
-        return livroDao.getReferenceById(id);
+        return livroDao.findById(id).get();
     }
 
     @Override

@@ -1,25 +1,66 @@
 import { renderMenuLateral } from "../menuLateral/menuLateralService.js"
+import { getApi } from "../utils/Api.js";
 
 var telaAtual = window.location.pathname;
 
-if (telaAtual == "/livros") {
+if (telaAtual.includes("/livros")) {
     window.onload = function () {
         renderMenuLateral();
+        var tabelaLivro = document.querySelector('.tabela');
+
+        document.querySelector('.btnAdicionar').addEventListener('click', btnAdicionarClick);
+        for(let i = 0; i <tabelaLivro.rows.length-1; i++){
+            var linha = tabelaLivro.rows[i+1];
+            linha.addEventListener('dblclick', editarLivro);
+        }
     }
-    document.querySelector('.btnAdicionar').addEventListener('click', btnAdicionarClick);
 
     function btnAdicionarClick() {
-        window.open('/cadastroLivro', '_self');
+        window.open('/cadastroLivro/""', '_self');
+    }
+
+    function editarLivro(evento){
+        var linhaSelecionada = evento.currentTarget;
+        var codigo = linhaSelecionada.querySelector('.codigoColuna').innerText;
+
+        window.open('/cadastroLivro/'+codigo, '_self');
+        var requisicao = new XMLHttpRequest();
+        
+        requisicao.open("get", "/livro/findById/"+codigo);
+        requisicao.setRequestHeader('Content-Type', 'application/json');
+        
+        requisicao.send(codigo);
+
+        requisicao.onreadystatechange = function () {
+            if (requisicao.readyState == 4) {
+                if (requisicao.status == 200) {
+                } else {
+                    alert("Erro ao salvar o livro. Por favor, entre em contato com o suporte.")
+                }
+            }
+        }
+
     }
 
     //verica a tela que o usuario está vendo
-} else if (telaAtual == "/cadastroLivro") {
-    document.querySelector('.bntFechar').addEventListener('click', btnFecharClick);
-    document.querySelector('.bntSalvar').addEventListener('click', salvarLivro);
+} else if (telaAtual.includes("/cadastroLivro")) {
+
+    window.onload = function (win) {
+        var api = getApi(win);
+        if(api.parametros != "" && api.parametros != null){
+            carregarFormulario(api.parametros);
+        }
+        document.querySelector('.bntFechar').addEventListener('click', btnFecharClick);
+        document.querySelector('.bntSalvar').addEventListener('click', salvarLivro);
+    }
 
     function btnFecharClick(evento) {
         window.open('/livros', '_self');
     };
+
+    function carregarFormulario(){
+
+    }
 
     function salvarLivro(evento) {
         evento.preventDefault();

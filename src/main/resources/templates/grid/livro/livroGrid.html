@@ -83,22 +83,22 @@
         <table class="tabela">
             <thead>
                 <tr>
-                    <th scope="col">Codigo</th>
+                    <th class="codigoColuna" style="width: 100px; text-align: center" scope="col">Codigo</th>
                     <th scope="col">Título</th>
                     <th scope="col">Autor</th>
                     <th scope="col">Editora</th>
                     <th scope="col">Gênero</th>
-                    <th scope="col">Página</th>
+                    <th style="width: 100px; text-align: right" scope="col">Páginas</th>
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="livro : ${livroList}">
-                    <td scope="row" th:text="${livro.id}"></td>
+                    <td class="codigoColuna" style="text-align: center; font-weight: bold;" scope="row" th:text="${livro.id}"></td>
                     <td th:text="${livro.titulo}"></td>
                     <td th:text="${livro.autor}"></td>
                     <td th:text="${livro.editora}"></td>
                     <td th:text="${livro.genero}"></td>
-                    <td th:text="${livro.paginas}"></td>
+                    <td style="text-align: right" th:text="${livro.paginas}"></td>
                 </tr>
             </tbody>
         </table>

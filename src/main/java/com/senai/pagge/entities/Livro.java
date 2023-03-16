@@ -1,5 +1,7 @@
 package com.senai.pagge.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -51,6 +53,7 @@ public class Livro {
     private int status;
 
     @ManyToOne
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @JoinColumn(name="emprestimo_id")
     private Emprestimo emprestimo;
 
