@@ -50,6 +50,11 @@ td {
     background-color: var(--branco-sujo);
 }
 
+.tabela .deleteColuna:hover{
+    border: 1px rgb(255, 119, 119) solid;
+    background-color: rgba(255, 106, 106, 0.5);
+}
+
 .tabela tbody tr:hover {
     border: 1px var(--dark-blue) solid;
 }
