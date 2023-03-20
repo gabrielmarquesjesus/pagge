@@ -11,36 +11,59 @@ body {
     width: 100%;
 }
 
+/*Menu lateral*/
+.link{
+    box-sizing: content-box;
+}
+
 /*Tabela-Padrão*/
 .tabela {
     width: 100%;
 }
 
-thead{
+.tabela thead{
+    font-size: 20px;
+    color: white;
     background-color: var(--dark-blue);
 }
 
-th{
-    font-size: 20px;
-    color: white;
+.tabela thead th{
+    border-left: 2px rgb(255, 255, 255) solid;
+}
+
+.tabela tbody td{
+    border-left: 2px var(--dark-blue) solid;
+}
+
+.tabela .codigoColuna{
+    border-left: 0
 }
 
 .tabela,
 th,
 td {
-    border: black 1px solid;
     border-collapse: collapse;
     padding: 15px 10px;
     text-align: left;
 }
 
-.tabela tr:nth-child(even) {
+.tabela tbody tr:nth-child(even) {
     background-color: var(--light-blue2);
 }
 
-.tabela tr:nth-last-child(even) {
+.tabela tbody tr:nth-child(odd) {
     background-color: var(--branco-sujo);
 }
+
+.tabela .deleteColuna:hover{
+    border: 1px rgb(255, 119, 119) solid;
+    background-color: rgba(255, 106, 106, 0.5);
+}
+
+.tabela tbody tr:hover {
+    border: 2px solid var(--dark-blue);
+}
+
 /*Fim tabela*/
 .tituloPagina{
     display: flex;

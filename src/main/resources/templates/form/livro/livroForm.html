@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de livro</title>
-    <link rel="stylesheet" href="static/css/app.css">
-    <link rel="stylesheet" href="static/css/livro/livroFormStyle.css">
+    <link rel="stylesheet" href="/static/css/app.css">
+    <link rel="stylesheet" href="/static/css/livro/livroFormStyle.css">
 </head>
 
 <body>
@@ -15,15 +15,28 @@
         <div class="tituloPagina">
             <h1>Cadastro de Livro</h1>
         </div>
-        
+
         <button class="bntFechar">
-            <img src="static/icons/Fechar.png" alt="">
+            <img src="/static/icons/Fechar.png" alt="">
         </button>
     </header>
     <form class="formLivro">
         <div class="formCampos">
+
+            <input hidden type="number" name="id" id="id">
+
             <label for="titulo">Título:</label>
             <input type="text" name="titulo" id="titulo">
+
+            <div class="buscaIsbn">
+                <div class="campoIsbn">
+                    <label for="isbn">Isbn:</label>
+                    <input type="text" name="isbn" id="isbn">
+                </div>
+                <button class="btnBuscaIsbn btn-rouded">
+                    <img src="/static/icons/icon-lupa.png" alt="">
+                </button>
+            </div>
 
             <label for="autor">Autor:</label>
             <input type="text" name="autor" id="autor">
@@ -37,14 +50,11 @@
             <label for="genero">Gênero:</label>
             <input type="text" name="genero" id="genero">
 
-            <label for="isbn">Isbn:</label>
-            <input type="text" name="isbn" id="isbn">
-
             <label for="status">Status:</label>
             <select name="status" id="status">
                 <option hidden value="">Selecione...</option>
-                <option value="0">Indisponivel</option>
-                <option value="1">Disponivel</option>
+                <option value="0">Disponivel</option>
+                <option value="1">Indisponivel</option>
             </select>
 
             <label for="observacao">Observação:</label>
@@ -52,19 +62,21 @@
         </div>
 
         <div class="imgLivro">
-            <img src="https://images-submarino.b2w.io/produtos/01/00/img/128898/3/128898358_2GG.jpg" alt="">
+            <div class="livroVazio">
+                <img class="imgLivroSrc" src="" alt="">
+            </div>
         </div>
 
         <div class="footer">
             <button type="submit" class="bntSalvar btn-retangulo">
                 Salvar
             </button>
-    
+
         </div>
     </form>
 
 
-    <script type="module" src="static/services/livros/livroService.js"></script>
+    <script type="module" src="/static/services/livros/livroService.js"></script>
 </body>
 
 </html>

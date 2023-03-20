@@ -16,13 +16,15 @@
 <body>
     <div class="geral">
         <div class="menuLateral"></div>
-
+        
         <div class="filtro">
             <div class="tituloPagina">
                 <h4>Busca de Livros</h4>
+                <H1 th:text="${testeDois}"></H1>
             </div>
-
+            
             <div class="filtroCampos">
+
                 <div id="campoCodigo">
                     <label for="codigo">Código:</label>
                     <input type="number" name="codigo" id="codigo">
@@ -57,8 +59,8 @@
                     <label for="status">Status:</label>
                     <select  name="status" id="status">
                         <option hidden value="">Selecione...</option>
-                        <option value="0">Indisponivel</option>
-                        <option value="1">Disponivel</option>
+                        <option value="0">Disponivel</option>
+                        <option value="1">Indisponivel</option>
                     </select>
                 </div>
             </div>
@@ -82,51 +84,20 @@
         <table class="tabela">
             <thead>
                 <tr>
-                    <th scope="col">Codigo</th>
+                    <th class="codigoColuna" style="width: 100px; text-align: center" scope="col">Codigo</th>
                     <th scope="col">Título</th>
                     <th scope="col">Autor</th>
                     <th scope="col">Editora</th>
                     <th scope="col">Gênero</th>
-                    <th scope="col">Página</th>
+                    <th style="width: 100px; text-align: right" scope="col">Páginas</th>
+                    <th style="width: 100px;text-align: center" scope="col">Status</th>
+                    <th></th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td scope="row">1</td>
-                    <td>1984</td>
-                    <td>George Orwell</td>
-                    <td>Companhia das Letras</td>
-                    <td>Ficção distópica</td>
-                    <td>416</td>
-                </tr>
-                <tr>
-                    <td scope="row">2</td>
-                    <td>O Pequeno Príncipe</td>
-                    <td>Antoine de Saint-Exupéry</td>
-                    <td>Agir</td>
-                    <td>Ficção infantojuvenil</td>
-                    <td>96</td>
-                </tr>
-                <tr>
-                    <td scope="row">3</td>
-                    <td>O Senhor dos Anéis: A Sociedade do Anel</td>
-                    <td>J.R.R. Tolkien</td>
-                    <td>Martins Fontes</td>
-                    <td>Fantasia</td>
-                    <td>576</td>
-                </tr>
-                <tr>
-                    <td scope="row">4</td>
-                    <td>O Senhor dos Anéis: A Sociedade do Anel</td>
-                    <td>J.R.R. Tolkien</td>
-                    <td>Martins Fontes</td>
-                    <td>Fantasia</td>
-                    <td>576</td>
-                </tr>
+            <tbody class="corpoTabelaLivro">
             </tbody>
         </table>
     </div>
-
 
 
     <script type="module" src="static/services/livros/livroService.js"></script>
