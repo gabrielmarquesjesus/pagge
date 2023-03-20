@@ -20,7 +20,7 @@ if (telaAtual.includes("/livros")) {
     function btnAdicionarClick() {
         window.open('/cadastroLivro/novo', '_self');
     }
-    
+
     //Abre o cadastro de livro com o código do livro na url
     function editarLivro(evento) {
         var linhaSelecionada = evento.currentTarget;
@@ -30,7 +30,7 @@ if (telaAtual.includes("/livros")) {
 
     //Método para buscar os livros no banco de acordo com filtro
     function pesquisaLivros(evento) {
-        if(evento)
+        if (evento)
             evento.preventDefault();
 
         //Filtro (Pode ser que seja vazio, nesse caso vai buscar todos os livros)
@@ -65,11 +65,11 @@ if (telaAtual.includes("/livros")) {
     function criaTabela(livroList) {
         var corpoTabelaLivro = document.querySelector('.corpoTabelaLivro');
         var linhas = corpoTabelaLivro.querySelectorAll('.linhaLivro');
-        for(var linha of linhas) {
+        for (var linha of linhas) {
             corpoTabelaLivro.removeChild(linha);
         }
 
-        for(var livro of livroList){
+        for (var livro of livroList) {
             var novaLinha = document.createElement('tr');
             novaLinha.addEventListener('dblclick', editarLivro);
             novaLinha.classList.add('linhaLivro');
@@ -79,21 +79,21 @@ if (telaAtual.includes("/livros")) {
             codigoCell.style.fontWeight = 'bold';
             codigoCell.classList.add('codigoColuna');
             codigoCell.innerText = livro.id;
-            
+
             var tituloCell = document.createElement('td');
             tituloCell.innerText = livro.titulo;;
-            
+
             var autorCell = document.createElement('td');
             autorCell.innerText = livro.autor;;
             var editoraCell = document.createElement('td');
             editoraCell.innerText = livro.editora;;
             var generoCell = document.createElement('td');
             generoCell.innerText = livro.genero;;
-            
+
             var paginasCell = document.createElement('td');
             paginasCell.style.textAlign = 'right';
             paginasCell.innerText = livro.paginas;
-            
+
             var statusCell = document.createElement('td');
             statusCell.style.textAlign = 'center';
             statusCell.innerText = livro.status == 0 ? 'Disponível' : 'Indisponível';
@@ -186,6 +186,28 @@ if (telaAtual.includes("/livros")) {
                     document.querySelector("#isbn").value = livro.isbn;
                     document.querySelector("#status").value = livro.status;
                     document.querySelector("#observacao").value = livro.observacao;
+                    
+                    const url = 'https://www.googleapis.com/books/v1/volumes?q=';
+
+                    requisicao.open("get", url + livro.isbn);
+                    requisicao.setRequestHeader('Content-Type', 'application/json');
+                    requisicao.send();
+
+                    requisicao.onreadystatechange = function () {
+                        if (requisicao.readyState == 4) {
+                            if (requisicao.status == 200) {
+                                var listaLivro = JSON.parse(requisicao.responseText);
+                                var livroInfo = listaLivro.items[0].volumeInfo;
+
+                                try {
+                                    document.querySelector(".imgLivroSrc").src = livroInfo.imageLinks.smallThumbnail;
+                                    document.querySelector(".livroVazio").style.backgroundColor = 'white';
+                                } catch (error) {
+                                }
+                            }
+                        }
+                    }
+
                 }
             }
         }
@@ -195,15 +217,15 @@ if (telaAtual.includes("/livros")) {
         evento.preventDefault();
 
         const livro = {
-            "id": document.querySelector("#id").value,
-            "titulo": document.querySelector("#titulo").value,
-            "autor": document.querySelector("#autor").value,
-            "editora": document.querySelector("#editora").value,
-            "paginas": document.querySelector("#pagina").value,
-            "genero": document.querySelector("#genero").value,
-            "isbn": document.querySelector("#isbn").value,
-            "status": document.querySelector("#status").value,
-            "observacao": document.querySelector("#observacao").value
+            "id": getFormValue("#id"),
+            "titulo": getFormValue("#titulo"),
+            "autor": getFormValue("#autor"),
+            "editora": getFormValue("#editora"),
+            "paginas": getFormValue("#pagina"),
+            "genero": getFormValue("#genero"),
+            "isbn": getFormValue("#isbn"),
+            "status": getFormValue("#status"),
+            "observacao": getFormValue("#observacao")
         };
 
         var requisicao = new XMLHttpRequest();

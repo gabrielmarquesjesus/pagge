@@ -33,7 +33,7 @@ public class LivroService implements BaseService<Livro>  {
 
     public List<Livro> findAllFilter(Livro livroFilter) {
         Example<Livro> example = Example.of(livroFilter);
-        return livroDao.findAll(example);
+        return livroDao.findAll(example, Sort.by(Direction.ASC, "id"));
     }
 
     @Override
