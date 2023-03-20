@@ -3,6 +3,9 @@ package com.senai.pagge.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.senai.pagge.entities.Livro;
@@ -26,6 +29,11 @@ public class LivroService implements BaseService<Livro>  {
     @Override
     public List<Livro> findAll() {
         return livroDao.findAll();
+    }
+
+    public List<Livro> findAllFilter(Livro livroFilter) {
+        Example<Livro> example = Example.of(livroFilter);
+        return livroDao.findAll(example);
     }
 
     @Override

@@ -44,13 +44,20 @@ label{
 
 .imgLivro {
     width: 40%;
+    height: 90vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .imgLivro img {
-    width: 90%;
+    height: 90%;
+}
+
+.imgLivro .livroVazio{
+    height: 80%;
+    width: 60%;
+    background-color: rgb(177, 177, 177);
 }
 
 .footer {
@@ -61,4 +68,21 @@ label{
 .bntSalvar {
     position: fixed;
     bottom: 10px;
+}
+
+.buscaIsbn {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.campoIsbn {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.btnBuscaIsbn{
+    margin-left: 10px;
+    margin-top: 23px;
 }

@@ -33,15 +33,12 @@ public class NavigateController {
     }
 
     @GetMapping(value ="/livros")
-    public String navigateLivroGrid(Model model){
-        List<Livro> livroList = livroService.findAll();
-        model.addAttribute("livroList", livroList);
+    public String navigateLivroGrid(){
         return "grid/livro/livroGrid"; 
     }
     
     @GetMapping(value ="/cadastroLivro/{livroJson}")
     public String navigateLivroForm(@PathVariable String livroJson){
-        System.out.println(livroJson);
         return "form/livro/livroForm"; 
     }
 }

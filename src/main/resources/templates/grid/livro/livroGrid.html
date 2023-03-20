@@ -20,6 +20,7 @@
         <div class="filtro">
             <div class="tituloPagina">
                 <h4>Busca de Livros</h4>
+                <H1 th:text="${testeDois}"></H1>
             </div>
             
             <div class="filtroCampos">
@@ -58,8 +59,8 @@
                     <label for="status">Status:</label>
                     <select  name="status" id="status">
                         <option hidden value="">Selecione...</option>
-                        <option value="0">Indisponivel</option>
-                        <option value="1">Disponivel</option>
+                        <option value="0">Disponivel</option>
+                        <option value="1">Indisponivel</option>
                     </select>
                 </div>
             </div>
@@ -93,17 +94,7 @@
                     <th></th>
                 </tr>
             </thead>
-            <tbody>
-                <tr th:each="livro : ${livroList}">
-                    <td class="codigoColuna" style="text-align: center; font-weight: bold;" scope="row" th:text="${livro.id}"></td>
-                    <td th:text="${livro.titulo}"></td>
-                    <td th:text="${livro.autor}"></td>
-                    <td th:text="${livro.editora}"></td>
-                    <td th:text="${livro.genero}"></td>
-                    <td style="text-align: right" th:text="${livro.paginas}"></td>
-                    <td style="text-align: center" th:text="${livro.status} == 0 ? 'Disponivel' : 'Indisponivel'"></td>
-                    <td class="deleteColuna" style="font-weight: bold;text-align: center;">x</td>
-                </tr>
+            <tbody class="corpoTabelaLivro">
             </tbody>
         </table>
     </div>

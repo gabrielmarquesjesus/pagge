@@ -18,7 +18,7 @@ public class Livro {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Nonnull
     @Column(nullable = false,length = 40)
@@ -42,7 +42,7 @@ public class Livro {
 
     @Nonnull
     @Column
-    private int paginas;
+    private Integer paginas;
 
     @Nonnull
     @Column(nullable = false,length = 13)
@@ -50,7 +50,7 @@ public class Livro {
 
     @Nonnull
     @Column(nullable = false)
-    private int status;
+    private Integer status;
 
     @ManyToOne
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -68,7 +68,7 @@ public class Livro {
         this.emprestimo = emprestimo;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -92,7 +92,7 @@ public class Livro {
         return observacao;
     }
 
-    public int getPaginas() {
+    public Integer getPaginas() {
         return paginas;
     }
 
@@ -100,11 +100,11 @@ public class Livro {
         return isbn;
     }
 
-    public int getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -128,7 +128,7 @@ public class Livro {
         this.observacao = observacao;
     }
 
-    public void setPaginas(int paginas) {
+    public void setPaginas(Integer paginas) {
         this.paginas = paginas;
     }
 
@@ -136,7 +136,7 @@ public class Livro {
         this.isbn = isbn;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 }
