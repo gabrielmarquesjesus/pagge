@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de livro</title>
+    <link rel="stylesheet" href="/static/css/app.css">
+    <link rel="stylesheet" href="/static/css/usuario/usuarioFormStyle.css">
+</head>
+
+<body>
+    <div class="geral">
+        <form class="formLivro">
+            <div class="formCampos">
+                <header class="header">
+                    <div class="tituloPagina">
+                        <h1>Cadastro de Usuário</h1>
+                    </div>
+
+                    <button class="bntFechar">
+                        <img src="/static/icons/Fechar.png" alt="">
+                    </button>
+                </header>
+
+                <input hidden type="number" name="id" id="id">
+
+                <div class="grupoCampo">
+                    <div class="campo">
+                        <label for="titulo">Nome:</label>
+                        <input type="text" name="nome" id="nome">
+                    </div>
+
+                    <div class="campo">
+                        <label for="tipo">Tipo:</label>
+                        <select name="tipo" id="tipo">
+                            <option hidden value="">Selecione...</option>
+                            <option value="0">Aluno</option>
+                            <option value="1">Funcionário</option>
+                            <option value="2">Outro</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grupoCampo">
+                    <div class="campo">
+                        <label for="statusEmprestimo">Status Empréstimo:</label>
+                        <select name="statusEmprestimo" id="statusEmprestimo">
+                            <option hidden value="">Selecione...</option>
+                            <option value="0">Disponivel</option>
+                            <option value="1">Indisponivel</option>
+                        </select>
+                    </div>
+                    <div class="campo">
+                        <label for="email">Endereco:</label>
+                        <input type="text" name="email" id="email">
+                    </div>
+                </div>
+
+                <div class="grupoCampo">
+                    <div class="campo">
+                        <label for="telefone">Telefone:</label>
+                        <input type="number" name="telefone" id="telefone">
+                    </div>
+
+                    <div class="campo">
+                        <label for="cpf">CPF:</label>
+                        <input type="text" name="cpf" id="cpf">
+                    </div>
+
+                    <div class="campo">
+                        <label for="genero">Email:</label>
+                        <input type="text" name="genero" id="genero">
+                    </div>
+                </div>
+
+                <label for="observacao">Observação:</label>
+                <textarea id="observacao" name="observacao" re></textarea>
+                <div class="footer">
+                    <button type="submit" class="bntSalvar btn-retangulo">
+                        Salvar
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script type="module" src="/static/services/livros/livroService.js"></script>
+</body>
+
+</html>
