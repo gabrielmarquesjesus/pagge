@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuarios</title>
+    <link rel="stylesheet" href="static/css/app.css">
+    <link rel="stylesheet" href="static/css/usuario/usuarioGridStyle.css">
+
+
+</head>
+
+<body>
+    <div class="geral">
+        <div class="menuLateral"></div>
+        <div class="filtro">
+            <div class="tituloPagina">
+                <h4>Busca de Usuarios</h4>
+                <H1 th:text="${testeDois}"></H1>
+            </div>
+
+            <div class="filtroCampos">
+
+                <div id="campoCodigo">
+                    <label for="codigo">Código:</label>
+                    <input type="number" name="codigo" id="codigo">
+                </div>
+
+                <div>
+                    <label for="nome">Nome:</label>
+                    <input type="text" name="nome" id="nome">
+                </div>
+
+                <div>
+                    <label for="cpf">CPF:</label>
+                    <input type="text" name="cpf" id="cpf">
+                </div>
+
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="text" name="email" id="email">
+                </div>
+
+                <div>
+                    <label for="telefone">Telefone:</label>
+                    <input type="text" name="telefone" id="telefone">
+                </div>
+
+                <div>
+                    <label for="statusEmprestimo">Status Empréstimo:</label>
+                    <select name="statusEmprestimo" id="statusEmprestimo">
+                        <option hidden value="">Selecione...</option>
+                        <option value="0">Disponivel</option>
+                        <option value="1">Indisponivel</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="filtroBotoes">
+                <button class="btnAdicionar btn-rouded">
+                    <img src="static/icons/icon-add.png" alt="">
+                </button>
+
+                <button class="btnRelatorio btn-rouded">
+                    <img src="static/icons/icon-folha.png" alt="">
+                </button>
+
+                <button class="btnPesquisa btn-rouded">
+                    <img src="static/icons/icon-lupa.png" alt="">
+                </button>
+
+            </div>
+
+        </div>
+        <table class="tabela">
+            <thead>
+                <tr>
+                    <th class="codigoColuna" style="width: 100px; text-align: center" scope="col">Codigo</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">CPF</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Telefone</th>
+                    <th scope="col">Status Empréstimo</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody class="corpoTabelaUsuario">
+            </tbody>
+        </table>
+    </div>
+
+    <script type="module" src="static/services/usuarios/usuarioService.js"></script>
+</body>
+
+</html>

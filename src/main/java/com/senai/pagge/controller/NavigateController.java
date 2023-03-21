@@ -1,14 +1,10 @@
 package com.senai.pagge.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import com.senai.pagge.entities.Livro;
 import com.senai.pagge.services.LivroService;
 
 /*
@@ -18,9 +14,6 @@ import com.senai.pagge.services.LivroService;
 
 @Controller
 public class NavigateController {
-
-    @Autowired
-    private LivroService livroService;
 
     @GetMapping(value = "/menuLateral") // Ao fazer uma requisição para a url: localhost:8080/menuLateral ...
     public String menu() {
@@ -40,5 +33,15 @@ public class NavigateController {
     @GetMapping(value ="/cadastroLivro/{livroJson}")
     public String navigateLivroForm(@PathVariable String livroJson){
         return "form/livro/livroForm"; 
+    }
+
+    @GetMapping(value ="/usuarios")
+    public String navigateUsuarioGrid(){
+        return "grid/usuario/usuarioGrid"; 
+    }
+    
+    @GetMapping(value ="/cadastroUsuario/{usuarioJson}")
+    public String navigateUsuarioForm(@PathVariable String usuarioJson){
+        return "form/usuario/usuarioForm"; 
     }
 }
