@@ -13,7 +13,7 @@ if (telaAtual.includes("/usuarios")) {
         //Local onde se adiciona os eventos da tela
         document.querySelector('.btnAdicionar').addEventListener('click', btnAdicionarClick);
         document.querySelector('.btnPesquisa').addEventListener('click', pesquisaUsuarios);
-        //pesquisaUsuarios();
+        pesquisaUsuarios();
     }
 
     //Abre o cadastro de usuario com a url "novo"
@@ -35,14 +35,14 @@ if (telaAtual.includes("/usuarios")) {
             evento.preventDefault();
 
         //Filtro (Pode ser que seja vazio, nesse caso vai buscar todos os usuarios)
-        const jsonData = {
+       const jsonData = {
             "id": getFormValue("#codigo"),
-            "titulo": getFormValue("#titulo"),
-            "autor": getFormValue("#autor"),
-            "editora": getFormValue("#editora"),
-            "genero": getFormValue("#genero"),
-            "isbn": getFormValue("#isbn"),
-            "status": getFormValue("#status"),
+            "nome": getFormValue("#nome"),
+            "statusEmprestimo": getFormValue("#statusEmprestimo"),
+            "email": getFormValue("#email"),
+            "telefone": getFormValue("#telefone"),
+            "cpf": getFormValue("#cpf"),
+            "email": getFormValue("#email"),
         };
 
         var requisicao = new XMLHttpRequest();
@@ -95,7 +95,7 @@ if (telaAtual.includes("/usuarios")) {
             telefoneCell.innerText = usuario.telefone;
 
             var statusEmprestimoCell = document.createElement('td');
-            statusEmprestimoCell.innerText = usuario.paginas;
+            statusEmprestimoCell.innerText = usuario.statusEmprestimo == 0 ? 'Disponível' : 'Indisponível';
 
             var deleteCell = document.createElement('td');
             deleteCell.innerText = "x";
@@ -153,7 +153,6 @@ if (telaAtual.includes("/usuarios")) {
         //Local onde se adiciona os eventos da tela
         document.querySelector('.bntFechar').addEventListener('click', btnFecharClick);
         document.querySelector('.bntSalvar').addEventListener('click', salvarUsuario);
-        document.querySelector('.btnBuscaIsbn').addEventListener('click', buscarUsuarioPorIsbn);
     }
 
     function btnFecharClick(evento) {
@@ -175,36 +174,17 @@ if (telaAtual.includes("/usuarios")) {
                     var usuario = JSON.parse(requisicao.responseText);
 
                     //Preenche o formulário com os dados do usuario
+
                     document.querySelector("#id").value = usuario.id;
-                    document.querySelector("#titulo").value = usuario.titulo;
-                    document.querySelector("#autor").value = usuario.autor;
-                    document.querySelector("#editora").value = usuario.editora;
-                    document.querySelector("#pagina").value = usuario.paginas;
-                    document.querySelector("#genero").value = usuario.genero;
-                    document.querySelector("#isbn").value = usuario.isbn;
-                    document.querySelector("#status").value = usuario.status;
+                    document.querySelector("#nome").value = usuario.nome;
+                    document.querySelector("#tipo").value = usuario.tipo;
+                    document.querySelector("#statusEmprestimo").value = usuario.statusEmprestimo;
+                    document.querySelector("#email").value = usuario.email;
+                    document.querySelector("#telefone").value = usuario.telefone;
+                    document.querySelector("#cpf").value = usuario.cpf;
+                    document.querySelector("#email").value = usuario.email;
+                    document.querySelector("#endereco").value = usuario.endereco;
                     document.querySelector("#observacao").value = usuario.observacao;
-
-                    const url = 'https://www.googleapis.com/books/v1/volumes?q=';
-
-                    requisicao.open("get", url + usuario.isbn);
-                    requisicao.setRequestHeader('Content-Type', 'application/json');
-                    requisicao.send();
-
-                    requisicao.onreadystatechange = function () {
-                        if (requisicao.readyState == 4) {
-                            if (requisicao.status == 200) {
-                                var listaUsuario = JSON.parse(requisicao.responseText);
-                                var usuarioInfo = listaUsuario.items[0].volumeInfo;
-
-                                try {
-                                    document.querySelector(".imgUsuarioSrc").src = usuarioInfo.imageLinks.smallThumbnail;
-                                    document.querySelector(".usuarioVazio").style.backgroundColor = 'white';
-                                } catch (error) {
-                                }
-                            }
-                        }
-                    }
 
                 }
             }
@@ -216,13 +196,14 @@ if (telaAtual.includes("/usuarios")) {
 
         const usuario = {
             "id": getFormValue("#id"),
-            "titulo": getFormValue("#titulo"),
-            "autor": getFormValue("#autor"),
-            "editora": getFormValue("#editora"),
-            "paginas": getFormValue("#pagina"),
-            "genero": getFormValue("#genero"),
-            "isbn": getFormValue("#isbn"),
-            "status": getFormValue("#status"),
+            "nome": getFormValue("#nome"),
+            "tipo": getFormValue("#tipo"),
+            "statusEmprestimo": getFormValue("#statusEmprestimo"),
+            "email": getFormValue("#email"),
+            "telefone": getFormValue("#telefone"),
+            "cpf": getFormValue("#cpf"),
+            "email": getFormValue("#email"),
+            "endereco": getFormValue("#endereco"),
             "observacao": getFormValue("#observacao")
         };
 
@@ -239,42 +220,6 @@ if (telaAtual.includes("/usuarios")) {
                     window.open('/usuarios', '_self');
                 } else {
                     alert("Erro ao salvar o usuario. Por favor, entre em contato com o suporte.")
-                }
-            }
-        }
-
-    }
-
-    function buscarUsuarioPorIsbn(evento) {
-        evento.preventDefault();
-        var isbn = document.querySelector('#isbn').value;
-
-        if (isbn != "" && isbn != null) {
-            const url = 'https://www.googleapis.com/books/v1/volumes?q=';
-
-            var requisicao = new XMLHttpRequest();
-
-            requisicao.open('GET', url + isbn);
-            requisicao.send();
-
-            requisicao.onreadystatechange = function () {
-                if (requisicao.readyState == 4) {
-                    if (requisicao.status == 200) {
-                        var listaUsuario = JSON.parse(requisicao.responseText);
-                        var usuarioInfo = listaUsuario.items[0].volumeInfo;
-
-                        document.querySelector("#titulo").value = usuarioInfo.title;
-                        document.querySelector("#autor").value = usuarioInfo.authors[0];
-                        document.querySelector("#editora").value = usuarioInfo.publisher;
-                        document.querySelector("#pagina").value = usuarioInfo.pageCount;
-                        document.querySelector("#genero").value = usuarioInfo.categories[0];
-
-                        try {
-                            document.querySelector(".imgUsuarioSrc").src = usuarioInfo.imageLinks.smallThumbnail;
-                            document.querySelector(".usuarioVazio").style.backgroundColor = 'white';
-                        } catch (error) {
-                        }
-                    }
                 }
             }
         }

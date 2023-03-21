@@ -17,11 +17,11 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Nonnull
     @Column(nullable = false)
-    private int tipo;
+    private Long tipo;
 
     @Nonnull
     @Column(nullable = false,length = 150)
@@ -48,98 +48,91 @@ public class Usuario {
 
     @Nonnull  
     @Column(nullable = false) 
-    private int statusEmprestimo;
+    private Long statusEmprestimo;
 
     @OneToMany(mappedBy = "usuario")
     private List<Emprestimo> emprestimoList;
 
-//getters and setters
-
-    public List<Emprestimo> getEmprestimoList() {
-        return emprestimoList;
-    }
-
-
-    public void setEmprestimoList(List<Emprestimo> emprestimoList) {
-        this.emprestimoList = emprestimoList;
-    }
-
-
-    public String getEmail() {
-        return email;
-    }
-
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    public int getTipo() {
+    public Long getTipo() {
         return tipo;
     }
 
+    public void setTipo(Long tipo) {
+        this.tipo = tipo;
+    }
 
     public String getEndereco() {
         return endereco;
     }
 
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
 
     public String getNome() {
         return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getCpf() {
         return cpf;
     }
 
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
 
     public String getTelefone() {
         return telefone;
     }
 
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getObservacao() {
         return observacao;
     }
 
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-
-    public void setTipo(int tipo) {
-        this.tipo = tipo;
-    }
-
-
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
-
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
-
     public void setObservacao(String observacao) {
         this.observacao = observacao;
     }
+
+    public Long getStatusEmprestimo() {
+        return statusEmprestimo;
+    }
+
+    public void setStatusEmprestimo(Long statusEmprestimo) {
+        this.statusEmprestimo = statusEmprestimo;
+    }
+
+    public List<Emprestimo> getEmprestimoList() {
+        return emprestimoList;
+    }
+
+    public void setEmprestimoList(List<Emprestimo> emprestimoList) {
+        this.emprestimoList = emprestimoList;
+    }
+
+
 
 }
