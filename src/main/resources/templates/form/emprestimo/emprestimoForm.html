@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Empréstimo</title>
+    <link rel="stylesheet" href="/static/css/app.css">
+    <link rel="stylesheet" href="/static/css/emprestimo/emprestimoFormStyle.css">
+</head>
+
+<body>
+    <div class="geral">
+        <form class="formLivro">
+            <div class="formCampos">
+                <header class="header">
+                    <div class="tituloPagina">
+                        <h1>Cadastro de Empréstimo</h1>
+                    </div>
+
+                    <button class="bntFechar">
+                        <img src="/static/icons/Fechar.png" alt="">
+                    </button>
+                </header>
+
+                <input hidden type="number" name="id" id="id">
+
+                <div class="grupoCampo">
+                    <div class="campo codigoUsuario">
+                        <label for="codigoUsuario">Código:</label>
+                        <input type="text" name="codigoUsuario" id="codigoUsuario">
+                    </div>
+                    <div class="campo nomeUsuario">
+                        <label for="nomeUsuario">Nome Usuário:</label>
+                        <input disabled type="text" name="nomeUsuario" id="nomeUsuario">
+                    </div>
+                </div>
+
+                <div class="grupoCampo">
+                    <div class="campo prazoDevolucao">
+                        <label for="prazoDevolucao">Prazo Devolução:</label>
+                        <input type="date" name="prazoDevolucao" id="prazoDevolucao">
+                    </div>
+
+                    <div class="campo dataEmprestimo">
+                        <label for="dataEmprestimo">Data Emprestimo:</label>
+                        <input type="date" name="dataEmprestimo" id="dataEmprestimo">
+                    </div>
+
+                    <div class="campo dataDevolucao">
+                        <label for="dataDevolucao">Data Devolução:</label>
+                        <input type="date" name="dataDevolucao" id="dataDevolucao">
+                    </div>
+
+                    <div class="campo status">
+                        <label for="status">Status:</label>
+                        <select name="status" id="status">
+                            <option hidden value="">Selecione...</option>
+                            <option value="0">Agendado</option>
+                            <option value="1">Ativo</option>
+                            <option value="2">Em Atraso</option>
+                            <option value=",">Finalizado</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grupoLivros">
+                    <div class="grupoCampo">
+                        <div class="campo codigoLivro1">
+                            <label for="codigoLivro1">Código:</label>
+                            <input type="text" name="codigoLivro1" id="codigoLivro1">
+                        </div>
+                        <div class="campo tituloLivro1">
+                            <label for="tituloLivro1">Título Livro:</label>
+                            <input disabled type="text" name="tituloLivro1" id="tituloLivro1">
+                        </div>
+                    </div>
+                    <div class="grupoCampo">
+                        <div class="campo codigoLivro2">
+                            <label for="codigoLivro2">Código:</label>
+                            <input type="text" name="codigoLivro2" id="codigoLivro2">
+                        </div>
+                        <div class="campo tituloLivro2">
+                            <label for="tituloLivro2">Título Livro:</label>
+                            <input disabled type="text" name="tituloLivro2" id="tituloLivro2">
+                        </div>
+                    </div>
+                </div>
+
+                <label for="observacao">Observação:</label>
+                <textarea id="observacao" name="observacao" re></textarea>
+                <div class="footer">
+                    <button type="submit" class="bntSalvar btn-retangulo">
+                        Salvar
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script type="module" src="/static/services/emprestimos/emprestimoService.js"></script>
+</body>
+
+</html>
