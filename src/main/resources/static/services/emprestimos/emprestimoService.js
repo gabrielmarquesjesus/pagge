@@ -208,9 +208,7 @@ if (telaAtual.includes("/emprestimos")) {
 
         const emprestimo = {
             "id": getFormValue("#id"),
-            "usuario": {
-                "id": getFormValue("#codigoUsuario")
-            },
+            "usuarioId": getFormValue("#codigoUsuario"),
             "prazoDevolucao": getFormValue("#prazoDevolucao"),
             "dataEmprestimo": getFormValue("#dataEmprestimo"),
             "dataDevolucao": getFormValue("#dataDevolucao"),

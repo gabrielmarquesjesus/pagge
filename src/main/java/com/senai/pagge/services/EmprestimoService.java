@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.senai.pagge.entities.Emprestimo;
 import com.senai.pagge.entities.Livro;
+import com.senai.pagge.entities.Usuario;
 import com.senai.pagge.repository.EmprestimoDao;
 //Camada que possue a logica de programação.
 @Service
@@ -22,6 +23,9 @@ public class EmprestimoService implements BaseService<Emprestimo>  {
 
     @Override
     public void save(Emprestimo e) {
+        Usuario usuario = new Usuario();
+        usuario.setId(e.getUsuarioId());
+        e.setUsuario(usuario);
         emprestimoDao.save(e);
 
         if(e.getLivroList() != null && !e.getLivroList().isEmpty()){
