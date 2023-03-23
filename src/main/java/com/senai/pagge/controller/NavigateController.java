@@ -1,11 +1,8 @@
 package com.senai.pagge.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-
-import com.senai.pagge.services.LivroService;
 
 /*
 * Classe java responsável por endereçar cada tela do sistema para que 
@@ -43,5 +40,15 @@ public class NavigateController {
     @GetMapping(value ="/cadastroUsuario/{usuarioJson}")
     public String navigateUsuarioForm(@PathVariable String usuarioJson){
         return "form/usuario/usuarioForm"; 
+    }
+
+    @GetMapping(value ="/emprestimos")
+    public String navigateEmprestimoGrid(){
+        return "grid/emprestimo/emprestimoGrid"; 
+    }
+    
+    @GetMapping(value ="/cadastroEmprestimo/{emprestimoJson}")
+    public String navigateEmprestimoForm(@PathVariable String emprestimoJson){
+        return "form/emprestimo/emprestimoForm"; 
     }
 }

@@ -16,36 +16,36 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.senai.pagge.entities.Usuario;
-import com.senai.pagge.services.UsuarioService;
+import com.senai.pagge.entities.Emprestimo;
+import com.senai.pagge.services.EmprestimoService;
 
 @RestController
-@RequestMapping("/usuario")
-public class UsuarioController {
+@RequestMapping("/emprestimo")
+public class EmprestimoController {
     @Autowired
-    private UsuarioService usuarioService;
+    private EmprestimoService emprestimoService;
 
     @PostMapping(value = "/save", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public void save(@RequestBody String jsonData) throws JsonMappingException, JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
-        Usuario usuario = objectMapper.readValue(jsonData, Usuario.class);
-        usuarioService.save(usuario);
+        Emprestimo emprestimo = objectMapper.readValue(jsonData, Emprestimo.class);
+        emprestimoService.save(emprestimo);
     }
 
     @GetMapping(value = "/findById/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Usuario findById(@PathVariable Long id){
-        return usuarioService.findById(id);
+    public Emprestimo findById(@PathVariable Long id){
+        return emprestimoService.findById(id);
     }
 
     @DeleteMapping(value = "/delete/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void delete(@PathVariable Long id){
-        usuarioService.delete(id);
+        emprestimoService.delete(id);
     }
 
     @GetMapping(value = "/findAllFilter", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Usuario> findAllFilter(@RequestParam(name = "jsonData") String jsonData) throws JsonMappingException, JsonProcessingException {
+    public List<Emprestimo> findAllFilter(@RequestParam(name = "jsonData") String jsonData) throws JsonMappingException, JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
-        Usuario usuarioFilter = objectMapper.readValue(jsonData, Usuario.class);
-        return usuarioService.findAllFilter(usuarioFilter);
+        Emprestimo emprestimoFilter = objectMapper.readValue(jsonData, Emprestimo.class);
+        return emprestimoService.findAllFilter(emprestimoFilter);
     }
 }

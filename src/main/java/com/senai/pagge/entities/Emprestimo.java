@@ -3,6 +3,8 @@ package com.senai.pagge.entities;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -20,7 +22,7 @@ public class Emprestimo {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     
     @Nonnull
     @Column(length = 200)
@@ -40,20 +42,21 @@ public class Emprestimo {
     
     @Nonnull
     @Column(nullable = false)
-    private int status;
+    private Long status;
 
     @ManyToOne
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
 
     @OneToMany(mappedBy = "emprestimo")
+    @JsonIgnoreProperties
     private List<Livro> livroList;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -89,11 +92,11 @@ public class Emprestimo {
         this.dataDevolucao = dataDevolucao;
     }
 
-    public int getStatus() {
+    public Long getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(Long status) {
         this.status = status;
     }
 
@@ -112,5 +115,6 @@ public class Emprestimo {
     public void setLivroList(List<Livro> livroList) {
         this.livroList = livroList;
     }
+
  
 }
