@@ -156,6 +156,7 @@ if (telaAtual.includes("/usuarios")) {
     }
 
     function btnFecharClick(evento) {
+        evento.preventDefault();
         window.open('/usuarios', '_self');
     };
 

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.senai.pagge.entities.Emprestimo;
 import com.senai.pagge.entities.Livro;
+import com.senai.pagge.entities.Usuario;
 import com.senai.pagge.repository.EmprestimoDao;
 //Camada que possue a logica de programação.
 @Service
@@ -22,6 +23,9 @@ public class EmprestimoService implements BaseService<Emprestimo>  {
 
     @Override
     public void save(Emprestimo e) {
+        Usuario usuario = new Usuario();
+        usuario.setId(e.getUsuarioId());
+        e.setUsuario(usuario);
         emprestimoDao.save(e);
 
         if(e.getLivroList() != null && !e.getLivroList().isEmpty()){
@@ -36,12 +40,20 @@ public class EmprestimoService implements BaseService<Emprestimo>  {
 
     @Override
     public Emprestimo findById(Long id) {
-        return emprestimoDao.findById(id).get();
+        Emprestimo emprestimo = emprestimoDao.findById(id).get();
+        emprestimo.setUsuarioId(emprestimo.getUsuario().getId());
+        emprestimo.setUsuarioNome(emprestimo.getUsuario().getNome());
+        return emprestimo;
     }
 
     @Override
     public List<Emprestimo> findAll() {
-        return emprestimoDao.findAll();
+        List<Emprestimo> emprestimoList = emprestimoDao.findAll();
+        for(Emprestimo emp : emprestimoList){
+            emp.setUsuarioId(emp.getUsuario().getId());
+            emp.setUsuarioNome(emp.getUsuario().getNome());
+        }
+        return emprestimoList;
     }
 
     public List<Emprestimo> findAllFilter(Emprestimo emprestimoFilter) {

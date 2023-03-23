@@ -1,5 +1,6 @@
 package com.senai.pagge.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.annotation.Nonnull;
@@ -55,6 +56,7 @@ public class Livro {
     @ManyToOne
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @JoinColumn(name="emprestimo_id")
+    @JsonIgnore
     private Emprestimo emprestimo;
 
     //getters and setters
