@@ -13,11 +13,12 @@ if (telaAtual.includes("/emprestimos")) {
         //Local onde se adiciona os eventos da tela
         document.querySelector('.btnAdicionar').addEventListener('click', btnAdicionarClick);
         document.querySelector('.btnPesquisa').addEventListener('click', pesquisaEmprestimos);
-        //pesquisaEmprestimos();
+        pesquisaEmprestimos();
     }
 
     //Abre o cadastro de emprestimo com a url "novo"
     async function btnAdicionarClick() {
+        evento.preventDefault();
         window.open('/cadastroEmprestimo/novo', '_self');
 
     }
@@ -46,7 +47,8 @@ if (telaAtual.includes("/emprestimos")) {
         };
 
         var requisicao = new XMLHttpRequest();
-        requisicao.open("get", "/emprestimo/findAllFilter?jsonData=" + encodeURIComponent(JSON.stringify(jsonData)));
+        //requisicao.open("get", "/emprestimo/findAllFilter?jsonData=" + encodeURIComponent(JSON.stringify(jsonData)));
+        requisicao.open("get", "/emprestimo/findAll");
         requisicao.setRequestHeader('Content-Type', 'application/json');
         requisicao.send();
 
@@ -82,20 +84,20 @@ if (telaAtual.includes("/emprestimos")) {
             codigoCell.classList.add('codigoColuna');
             codigoCell.innerText = emprestimo.id;
 
-            var nomeCell = document.createElement('td');
-            nomeCell.innerText = emprestimo.nome;
+            var usuarioCell = document.createElement('td');
+            usuarioCell.innerText = emprestimo.usuarioId + " - " + emprestimo.usuarioNome;
 
-            var cpfCell = document.createElement('td');
-            cpfCell.innerText = emprestimo.cpf;
+            var prazoDevolucaoCell = document.createElement('td');
+            prazoDevolucaoCell.innerText = emprestimo.prazoDevolucao;
 
-            var emailCell = document.createElement('td');
-            emailCell.innerText = emprestimo.email;
+            var dataEmprestimoCell = document.createElement('td');
+            dataEmprestimoCell.innerText = emprestimo.dataEmprestimo;
 
-            var telefoneCell = document.createElement('td');
-            telefoneCell.innerText = emprestimo.telefone;
+            var dataDevolucaoCell = document.createElement('td');
+            dataDevolucaoCell.innerText = emprestimo.dataDevolucao;
 
-            var statusEmprestimoCell = document.createElement('td');
-            statusEmprestimoCell.innerText = emprestimo.statusEmprestimo == 0 ? 'Disponível' : 'Indisponível';
+            var statusCell = document.createElement('td');
+            statusCell.innerText = emprestimo.status;
 
             var deleteCell = document.createElement('td');
             deleteCell.innerText = "x";
@@ -105,11 +107,11 @@ if (telaAtual.includes("/emprestimos")) {
             deleteCell.addEventListener('click', deletarEmprestimo);
 
             novaLinha.appendChild(codigoCell);
-            novaLinha.appendChild(nomeCell);
-            novaLinha.appendChild(cpfCell);
-            novaLinha.appendChild(emailCell);
-            novaLinha.appendChild(telefoneCell);
-            novaLinha.appendChild(statusEmprestimoCell);
+            novaLinha.appendChild(usuarioCell);
+            novaLinha.appendChild(prazoDevolucaoCell);
+            novaLinha.appendChild(dataEmprestimoCell);
+            novaLinha.appendChild(dataDevolucaoCell);
+            novaLinha.appendChild(statusCell);
             novaLinha.appendChild(deleteCell);
 
             corpoTabelaEmprestimo.appendChild(novaLinha);
@@ -176,18 +178,24 @@ if (telaAtual.includes("/emprestimos")) {
                 if (requisicao.status == 200) {
                     //Dados dos Emprestimo vindos do banco de dados
                     var emprestimo = JSON.parse(requisicao.responseText);
+                    var livroList = emprestimo.livroList;
 
                     //Preenche o formulário com os dados do emprestimo
 
                     document.querySelector("#id").value = emprestimo.id;
-                    document.querySelector("#nome").value = emprestimo.nome;
-                    document.querySelector("#tipo").value = emprestimo.tipo;
-                    document.querySelector("#statusEmprestimo").value = emprestimo.statusEmprestimo;
-                    document.querySelector("#email").value = emprestimo.email;
-                    document.querySelector("#telefone").value = emprestimo.telefone;
-                    document.querySelector("#cpf").value = emprestimo.cpf;
-                    document.querySelector("#email").value = emprestimo.email;
-                    document.querySelector("#endereco").value = emprestimo.endereco;
+                    document.querySelector("#codigoUsuario").value = emprestimo.usuarioId;
+                    document.querySelector("#nomeUsuario").value = emprestimo.usuarioNome;
+                    document.querySelector("#prazoDevolucao").value = emprestimo.prazoDevolucao;
+                    document.querySelector("#dataEmprestimo").value = emprestimo.dataEmprestimo;
+                    document.querySelector("#dataDevolucao").value = emprestimo.dataDevolucao;
+                    document.querySelector("#status").value = emprestimo.status;
+
+                    document.querySelector("#codigoLivro1").value = livroList[0].id;
+                    document.querySelector("#tituloLivro1").value = livroList[0].titulo;
+
+                    document.querySelector("#codigoLivro2").value = livroList[1].id;
+                    document.querySelector("#tituloLivro2").value = livroList[1].titulo;
+
                     document.querySelector("#observacao").value = emprestimo.observacao;
 
                 }
@@ -252,9 +260,10 @@ if (telaAtual.includes("/emprestimos")) {
                         //Dados dos Emprestimo vindos do banco de dados
                         var usuario = JSON.parse(requisicao.responseText);
                         document.querySelector('#nomeUsuario').value = usuario.nome;
-
+                        
                     } else {
                         alert("Usuário não encontrado!")
+                        document.querySelector('#nomeUsuario').value = "";
                     }
                 }
             }
@@ -284,6 +293,7 @@ if (telaAtual.includes("/emprestimos")) {
                         document.querySelector(tituloLivroId).value = livro.titulo;
                     } else {
                         alert("Livro não encontrado!")
+                        document.querySelector(tituloLivroId).value = "";
                     }
                 }
             }

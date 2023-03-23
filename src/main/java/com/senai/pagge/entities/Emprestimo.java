@@ -3,7 +3,10 @@ package com.senai.pagge.entities;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.Column;
@@ -15,42 +18,71 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 @Entity
-@Table(name="emprestimo")
+@Table(name = "emprestimo")
 public class Emprestimo {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     @Nonnull
     @Column(length = 200)
     private String observacao;
 
     @Nonnull
     @Column(nullable = false)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyy")
     private Date dataEmprestimo;
-
+    
     @Nonnull
     @Column(nullable = false)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyy")
     private Date prazoDevolucao;
-
+    
     @Nonnull
     @Column()
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyy")
     private Date dataDevolucao;
-    
+
     @Nonnull
     @Column(nullable = false)
     private Long status;
 
     @ManyToOne
     @JoinColumn(name = "usuario_id")
+    @JsonIgnore
     private Usuario usuario;
+
+    @JsonInclude()
+    @Transient
+    private Long usuarioId;
+
+    @JsonInclude()
+    @Transient
+    private String usuarioNome;
 
     @OneToMany(mappedBy = "emprestimo")
     @JsonIgnoreProperties
     private List<Livro> livroList;
+
+    public Long getUsuarioId() {
+        return usuarioId;
+    }
+
+    public void setUsuarioId(Long usuarioId) {
+        this.usuarioId = usuarioId;
+    }
+
+    public String getUsuarioNome() {
+        return usuarioNome;
+    }
+
+    public void setUsuarioNome(String usuarioNome) {
+        this.usuarioNome = usuarioNome;
+    }
 
     public Long getId() {
         return id;
@@ -116,5 +148,4 @@ public class Emprestimo {
         this.livroList = livroList;
     }
 
- 
 }

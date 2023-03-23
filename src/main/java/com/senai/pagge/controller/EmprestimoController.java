@@ -42,6 +42,12 @@ public class EmprestimoController {
         emprestimoService.delete(id);
     }
 
+    @GetMapping(value = "/findAll", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Emprestimo> findAll() {
+        List<Emprestimo> emprestimoList = emprestimoService.findAll(); 
+        return emprestimoList;
+    }
+
     @GetMapping(value = "/findAllFilter", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Emprestimo> findAllFilter(@RequestParam(name = "jsonData") String jsonData) throws JsonMappingException, JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();

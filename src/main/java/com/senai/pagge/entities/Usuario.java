@@ -1,6 +1,9 @@
 package com.senai.pagge.entities;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -51,6 +54,7 @@ public class Usuario {
     private Long statusEmprestimo;
 
     @OneToMany(mappedBy = "usuario")
+    @JsonIgnore
     private List<Emprestimo> emprestimoList;
 
     public Long getId() {

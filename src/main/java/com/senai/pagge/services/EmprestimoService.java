@@ -36,12 +36,20 @@ public class EmprestimoService implements BaseService<Emprestimo>  {
 
     @Override
     public Emprestimo findById(Long id) {
-        return emprestimoDao.findById(id).get();
+        Emprestimo emprestimo = emprestimoDao.findById(id).get();
+        emprestimo.setUsuarioId(emprestimo.getUsuario().getId());
+        emprestimo.setUsuarioNome(emprestimo.getUsuario().getNome());
+        return emprestimo;
     }
 
     @Override
     public List<Emprestimo> findAll() {
-        return emprestimoDao.findAll();
+        List<Emprestimo> emprestimoList = emprestimoDao.findAll();
+        for(Emprestimo emp : emprestimoList){
+            emp.setUsuarioId(emp.getUsuario().getId());
+            emp.setUsuarioNome(emp.getUsuario().getNome());
+        }
+        return emprestimoList;
     }
 
     public List<Emprestimo> findAllFilter(Emprestimo emprestimoFilter) {
